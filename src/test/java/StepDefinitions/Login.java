@@ -46,9 +46,18 @@ public class Login extends CommonMethods {
       if (userloggedIn){
           System.out.println("User is logged in successfully");
       }
+
     }
     @Then("Close the browser")
     public void close_the_browser() {
      closeBrowser();
+    }
+    @When("user enters valid {string} and valid {string}")
+    public void user_enters_valid_and_valid(String username, String password) {
+        WebElement userNameTextBox=driver.findElement(By.id("txtUsername"));
+        sendText(userNameTextBox, username);
+
+        WebElement passwordTextBox=driver.findElement(By.id("txtPassword"));
+        sendText(passwordTextBox, password);
     }
 }
