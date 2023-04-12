@@ -6,12 +6,12 @@ import io.cucumber.java.Before;
 
 public class Hooks extends CommonMethods {
 
-    @Before
+    @Before // make sure its from  io.cucumber.java.Before;
     public void preCondition(){
         openBrowserAndLaunchApplication();
     }
 
-    @After
+    @After  // make sure its from  io.cucumber.java.After;
     public void postCondition(){
         closeBrowser();
     }
