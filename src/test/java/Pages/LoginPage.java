@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+// page object model --->POM
 public class LoginPage extends CommonMethods {
     public  LoginPage(){
         PageFactory.initElements(driver,this);

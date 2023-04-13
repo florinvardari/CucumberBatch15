@@ -13,12 +13,15 @@ import org.junit.runner.RunWith;
         //it will quickly scan all the gherkin steps whether they are implemented or not
         //when we set dry run to false, it starts execution again
         dryRun = false,
-        tags = " @smoke",
+        tags = "@testcase2",
         //pretty keywords prints the steps in the console to increase readability
         //to generate the reports we need plugin of runner class
-         plugin = {"pretty"}
-         //this failed.txt file holds all the scenarios which are failed  during execution
+         plugin = {"pretty","html:target/Cucumber.html","json:target/Cucumber.json"}
+
      )
 
 public class SmokeRunner {
 }
+
+
+//target folder is mostly used for storing the test case execution reports generated using Cucumber

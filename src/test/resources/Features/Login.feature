@@ -1,6 +1,6 @@
 Feature: Login Functionalities
 
-  @smoke1
+  @smoke
   Scenario: Valid Admin login
    # Given open the browser and launch HRMS application
     When user enters valid email and valid password
@@ -65,3 +65,12 @@ Feature: Login Functionalities
   #If you want to use parameterization
 #If you wish to implement data driven testing
   # Scenario Outline is always used along with the keyword 'Examples'
+
+  #hard Code
+    # config file
+
+    #Cucumber Expression [ limited set of test data]
+    #Scenario Outline    [Parametrization],[Data Driven Testing][Browser will open and close number of times we have test data in Examples table]
+    #data Table
+
+    # Page Object Model : An object Repository [ It stores or holds all the webElements specific to a particular page]
