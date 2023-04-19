@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         tags = "@testcase2",
         //pretty keywords prints the steps in the console to increase readability
         //to generate the reports we need plugin of runner class
-         plugin = {"pretty","html:target/Cucumber.html","json:target/Cucumber.json"}
+         plugin = {"pretty","html:target/Cucumber.html","json:target/Cucumber.json","rerun:target/failed.txt"}
 
      )
 
