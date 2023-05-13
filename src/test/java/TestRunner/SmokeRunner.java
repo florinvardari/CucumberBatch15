@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         //it will quickly scan all the gherkin steps whether they are implemented or not
         //when we set dry run to false, it starts execution again
         dryRun = false,
-        tags = "@testcase2",
+        tags = " @database",
         //pretty keywords prints the steps in the console to increase readability
         //to generate the reports we need plugin of runner class
          plugin = {"pretty","html:target/Cucumber.html","json:target/Cucumber.json","rerun:target/failed.txt"}
