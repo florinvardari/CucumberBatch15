@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 public class HardCodedExamples {
 
     String baseURI = RestAssured.baseURI ="http://hrm.syntaxtechs.net/syntaxapi/api";
-    String token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ5NzE0MzksImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY4NTAxNDYzOSwidXNlcklkIjoiNTMwOCJ9.hGptiWno0J5-iRYPJSiqBTFmQOp8fUgkdpAQWGW6qXQ";
+    String token ="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODUzODU1MjMsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY4NTQyODcyMywidXNlcklkIjoiNTMwOCJ9.8PwYuLrZCvrbhW_ORnBp5-IydjU54zjCf7bxruL7PiU";
     static String employee_id;
     @Test
     public  void  bgetCreatedEmployee(){
@@ -71,6 +71,22 @@ public class HardCodedExamples {
     }
 
 //in homework create a method to get all employee and job title
+    @Test
+    public void GetJobTitle(){
+        RequestSpecification preparedRequest=given().header("Authorization",token);
+        Response response=preparedRequest.when().get("jobTitle.php");
+        response.prettyPrint();
+        response.then().assertThat().statusCode(200);
+    }
+
+    @Test
+    public void getAllEmployee(){
+        RequestSpecification preparedRequest=given().header("Authorization",token);
+        Response response=preparedRequest.when().get("/getAllEmployees.php");
+        response.prettyPrint();
+        response.then().assertThat().statusCode(200);
+    }
+
 
     @Test
     public void  cupdateEmployee(){

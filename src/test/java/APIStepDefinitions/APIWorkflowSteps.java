@@ -105,4 +105,64 @@ public class APIWorkflowSteps {
             }
         }
     }
-}
+    //--------------------------------------------------
+
+    @Given("a request is prepared to create an employee with dynamic data {string},{string},{string},{string},{string},{string},{string}")
+    public void a_request_is_prepared_to_create_an_employee_with_dynamic_data
+            (String firstName, String lastName, String middleName,
+             String gender, String birthday, String status,
+             String jobTitle) {
+        request = given().
+                header(APIConstants.HEADER_KEY_CONTENT_TYPE,
+                        APIConstants.HEADER_VALUE_CONTENT_TYPE).
+                header(APIConstants.HEADER_KEY_AUTHORIZATION,
+                        GenerateTokenSteps.token)
+                .body(APIPayloadConstants.
+                        createEmployeePayloadDynamic(
+                                firstName, lastName,middleName, gender,
+                                birthday, status, jobTitle));
+    }
+
+
+    //-----------------------------------------------------------------------------------------
+    @Given("a request is prepared to update an employee")
+    public void a_request_is_prepared_to_update_an_employee() {
+        request = given().header(APIConstants.HEADER_KEY_CONTENT_TYPE,
+                        APIConstants.HEADER_VALUE_CONTENT_TYPE).
+                header(APIConstants.HEADER_KEY_AUTHORIZATION,
+                        GenerateTokenSteps.token).
+                body(APIPayloadConstants.updateEmployeePayloadJson());
+    }
+
+    @When("a PUT call is made to update an employee")
+    public void a_put_call_is_made_to_update_an_employee() {
+        response = request.when().put(APIConstants.UPDATE_EMPLOYEE_URI);
+    }
+
+    @Then("the status code of updated employee is {int}")
+    public void the_status_code_of_updated_employee_is(Integer int1) {
+        response.then().assertThat().statusCode(int1);
+    }
+
+
+    //-------------------------GetOneEmployee--------------------------------------
+    @Given("a request is prepared to to get the specific employee with id nr {string}")
+    public void a_request_is_prepared_to_to_get_the_specific_employee_with_id_nr(String idNr) {
+        request=given().header(APIConstants.HEADER_KEY_AUTHORIZATION,GenerateTokenSteps.token)
+                .queryParam("employee_id",idNr);
+    }
+    @When("a get call is made to to get the specific employee")
+    public void a_get_call_is_made_to_to_get_the_specific_employee() {
+       response=request.when().get(APIConstants.GET_ONE_EMPLOYEE_URI);
+       response.prettyPrint();
+    }
+    @Then("a status code for this employee is {int}")
+    public void a_status_code_for_this_employee_is(Integer int1) {
+        response.then().assertThat().statusCode(int1);
+    }
+    @Then("the employee data {string} should match with {string}")
+    public void the_employee_data_should_match_with(String empIdObj, String expected) {
+        employee_id= response.jsonPath().getString(empIdObj);
+        Assert.assertEquals(employee_id,expected);
+    }
+    }
